@@ -22,7 +22,7 @@ def sayi_okunusu():
         if basamaklar[1] == key:
             birlik = (okunuslar[key][1])      
    
-      print(onluk + birlik)
+      print(f" Sayı okunuşu: {onluk}{birlik}")
   else:
     print("Sadece iki basamaklı sayılar girebilirsiniz. \n")
     sayi_okunusu()
