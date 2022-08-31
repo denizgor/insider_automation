@@ -27,6 +27,4 @@ def sayi_okunusu():
     print("Sadece iki basamaklı sayılar girebilirsiniz. \n")
     sayi_okunusu()
 
-sayi_okunusu()  
-
-sayi_okunusu()  
+sayi_okunusu()
