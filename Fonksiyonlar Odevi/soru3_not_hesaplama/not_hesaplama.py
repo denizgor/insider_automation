@@ -16,9 +16,6 @@ def nothesaplama():
     
   toplamnot = round((vize1 * 0.30) + (vize2 * 0.30) + (final * 0.40))
   
-  # Notları dictionary ile tutmak mümkün değil çünkü tek bir key-value çifti yerine bir aralık vermek gerekiyor. 
-  # Aksi halde daha fazla kod yazmak gerek.
-  
   if toplamnot >= 90:
     print("Öğrenci Notu: AA")
   elif toplamnot >= 85:
