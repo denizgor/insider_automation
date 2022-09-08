@@ -1,5 +1,6 @@
 def sayi_atama():
   sayi_input = input("İki basamaklı bir sayi girin. ")
+  
   return sayi_input
 
 def sayi_okunusu():
@@ -15,13 +16,17 @@ def sayi_okunusu():
       for key in okunuslar:
         if basamaklar[0] == key:
             onluk = (okunuslar[key][0])
+            
         if basamaklar[1] == key:
             birlik = (okunuslar[key][1])
+            
         if type(onluk) is str and type(birlik) is str:
           break
+          
       print(f" Sayı okunuşu: {onluk}{birlik}")
   else:
     print("Sadece iki basamaklı sayılar girebilirsiniz. \n")
+    
     sayi_okunusu()
 
 sayi_okunusu()
