@@ -1,9 +1,10 @@
-
 def kullanici_girdi_kontrol(kullanici_girdisi):
   if kullanici_girdisi >= 0 and kullanici_girdisi <= 100:
+    
     return kullanici_girdisi
   else:
     kullanici_girdisi = int(input("Yalnızca 0 ile 100 arasında bir sayı girin. \n"))
+    
     return kullanici_girdi_kontrol(kullanici_girdisi)
 
 vize1 = int(input("Birinci vize notunu girin:\n (0 - 100) "))
@@ -35,4 +36,3 @@ elif toplamnot >= 55:
   print("Öğrenci Notu: FD")
 elif toplamnot < 50:
   print("Öğrenci Notu: FF")
-
