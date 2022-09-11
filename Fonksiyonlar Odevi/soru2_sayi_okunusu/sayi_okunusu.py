@@ -33,5 +33,3 @@ def sayi_okunusu():
 
     okunus = "Sayı okunuşu: {}{}"
     print(okunus.format(onluk, birlik))
-
-sayi_okunusu()
