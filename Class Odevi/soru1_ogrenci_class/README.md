@@ -1,5 +1,6 @@
 
 Test kodu:
+
 ogrenci1 = Ogrenci("Ahmet", "Tüfekçi", "9-C")
 ogrenci_bilgisi = " Öğrenci Adı: {}\n Öğrenci Soyadı: {}\n Öğrenci Sınıfı: {}\n Puanı: {}"
 
