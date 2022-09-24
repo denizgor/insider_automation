@@ -25,7 +25,8 @@ class Soru():
 
                     if dogru_sayisi + yanlis_sayisi > 50:
                         print("Doğru ve yanlış sayısı toplamı 50'den büyük olamaz.")
-                        Soru.net_sayisi(self, "", "")
+                        dogru_sayisi = int(input("Doğru sayısını girin. \n"))
+                        yanlis_sayisi = int(input("Yanlış sayısını girin. \n"))
 
             else:
                 print("0 ile 50 arasında bir sayı girin.")
