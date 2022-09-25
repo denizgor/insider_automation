@@ -15,24 +15,20 @@ class Insan():
     def yetenek_ekle(self):
         yeni_yetenek = input("Eklemek istediğiniz yeteneği yazın:\n")
         Insan().yetenekler.append(yeni_yetenek)
+        #print(Insan().kisi_bilgileri())
+        print("Yetenekler:", Insan().yetenekler)
 
 
 #Test
 insan1 = Insan().kisi_bilgileri()
-
-
-
-
-
 print(insan1)
 
 #tek bir parametre alma
 #print(Insan().kisi_bilgileri(Insan().ad))
+#çalışmadı
 
-# ogrenci1 = Ogrenci("Ahmet", "Tüfekçi", "9-C")
-#
-# ogrenci_bilgisi = " Öğrenci Adı: {}\n Öğrenci Soyadı: {}\n Öğrenci Sınıfı: {}\n Puanı: {}"
-#
-# sonuc = Soru().hesapla(Soru().net_sayisi("", ""))
-#
-# print(ogrenci_bilgisi.format(ogrenci1.ogrenci_adi, ogrenci1.ogrenci_soyadi, ogrenci1.ogrenci_sinifi, sonuc))
+insan2 = Insan("Mustafa", "Akıncı", 24, "Türkiye", "İzmir").kisi_bilgileri()
+Insan().yetenek_ekle()
+print("İnsan 2:", insan2)
+
+
