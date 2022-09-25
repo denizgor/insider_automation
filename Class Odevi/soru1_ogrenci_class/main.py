@@ -35,5 +35,3 @@ class Soru():
 
     def hesapla(self, net_sayisi):
         return net_sayisi * 2
-
-
