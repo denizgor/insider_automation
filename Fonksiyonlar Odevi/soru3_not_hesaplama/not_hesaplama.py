@@ -35,5 +35,5 @@ elif toplam_not >= 60:
   print("Öğrenci Notu: DD")
 elif toplam_not >= 55:
   print("Öğrenci Notu: FD")
-else toplam_not < 50:
+else:
   print("Öğrenci Notu: FF")
