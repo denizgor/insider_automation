@@ -8,18 +8,26 @@ class Insan():
         self.yetenekler = yetenekler
 
     def kisi_bilgileri(self):
-        bilgiler = "Ad: {}\n, Soyad: {}\n, Yaş: {}\n, Ülke: {}\n, Şehir: {}\n, Yetenekler: {}\n"
+        bilgiler = "Ad: {}\nSoyad: {}\nYaş: {}\nÜlke: {}\nŞehir: {}\nYetenekler: {}\n"
+        return(bilgiler.format(Insan().ad, Insan().soyad, Insan().yas, Insan().ulke, Insan().sehir, Insan().yetenekler))
 
-        print(bilgiler.format(Insan.ad, Insan.soyad))
 
     def yetenek_ekle(self):
         yeni_yetenek = input("Eklemek istediğiniz yeteneği yazın:\n")
         Insan().yetenekler.append(yeni_yetenek)
 
 
-insan1 = Insan(Insan.kisi_bilgileri().bilgiler)
+#Test
+insan1 = Insan().kisi_bilgileri()
+
+
+
+
 
 print(insan1)
+
+#tek bir parametre alma
+#print(Insan().kisi_bilgileri(Insan().ad))
 
 # ogrenci1 = Ogrenci("Ahmet", "Tüfekçi", "9-C")
 #
