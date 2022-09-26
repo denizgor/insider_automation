@@ -28,8 +28,11 @@ class Soru():
                         dogru_sayisi = int(input("Doğru sayısını girin. \n"))
                         yanlis_sayisi = int(input("Yanlış sayısını girin. \n"))
 
+                else:
+                    print("Yanlış sayısı 0 ile 50 arasında olmalıdır.")
+
             else:
-                print("0 ile 50 arasında bir sayı girin.")
+                print("Doğru sayısı 0 ile 50 arasında olmalıdır.")
 
         return dogru_sayisi - (yanlis_sayisi * 0.25)
 
