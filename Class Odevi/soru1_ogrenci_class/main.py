@@ -1,6 +1,8 @@
-class Ogrenci():
-    """Bu sınıftan bir obje oluşturmak için öğrencinin adını, soyadını ve sınıfını
-    string olarak girin."""
+class Ogrenci:
+    """
+    Bu sınıftan bir obje oluşturmak için öğrencinin adını, soyadını ve sınıfını
+    string olarak girin.
+    """
 
     def __init__(self, ogrenci_adi, ogrenci_soyadi, ogrenci_sinifi):
         self.ogrenci_adi = ogrenci_adi
@@ -8,7 +10,7 @@ class Ogrenci():
         self.ogrenci_sinifi = ogrenci_sinifi
 
 
-class Soru():
+class Soru:
     def net_sayisi(self, dogru_sayisi, yanlis_sayisi):
         girdi_alindi = False
 
