@@ -27,3 +27,6 @@ print("SPO-1 Update:", stock_push_obj1.stockUpdate())
 
 #stock_push_obj2 = InStockPush("Mobile", False, 4, "23.20.2021", "25.11.2022", "TR", "In stock Push", False)
 #print("SPO-2 Update:", stock_push_obj2.stockUpdate())
+
+![image](https://user-images.githubusercontent.com/71087556/193903405-6419df80-e73e-4596-9ca8-1e29120f90cc.png)
+
