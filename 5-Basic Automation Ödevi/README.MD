@@ -28,3 +28,4 @@ https://www.loom.com/share/e0deef057fa64c049100d2af572b0318
 >Sayfaların doğruluğunun kontrolü için her adımda assertion kullanılacaktır.
 
 >assertTrue, assertEqual, assertIn ---> Bu üç assert kullanılacak.
+> 
