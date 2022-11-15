@@ -8,43 +8,60 @@ from selenium.webdriver import ActionChains
 
 
 class TestCheckLCWAutomation(unittest.TestCase):
+    EV_YASAM_CAT = (By.LINK_TEXT, "EV & YAŞAM")
+    CATAL_KASIK_CAT = (By.LINK_TEXT, "Çatal, Kaşık ve Bıçak")
+    CATAL_KASIK_BRD = (By.CLASS_NAME, "lcw-breadcrumb__item-list__item:last-child")
+    PRODUCT_CARD = (By.CSS_SELECTOR, "div.product-card")
+    ADD_TO_CART_BTN = (By.LINK_TEXT, "SEPETE EKLE")
+    CART_COUNT_BADGE = (By.CSS_SELECTOR, "span.badge-circle")
+    PROCEED_TO_PAY_TXT = (By.LINK_TEXT, "ÖDEME ADIMINA GEÇ")
+    DELETE_ITEM_ICON = (By.CSS_SELECTOR, "[title='Sil']")
+    DELETE_BTN = (By.LINK_TEXT, "Sil")
+    EMPTY_CART_TEXT = (By.CLASS_NAME, "cart-empty-title")
+    LCW_LOGO = (By.CSS_SELECTOR, "a.main-header-logo")
+
+    base_url = "https://www.lcwaikiki.com/tr-TR/TR"
+    catal_kasik_brd = "Çatal, Kaşık, Bıçak Setleri"
+    proceed_to_pay_txt = "ÖDEME ADIMINA GEÇ"
+
     def setUp(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.maximize_window()
-        self.driver.get("https://www.lcwaikiki.com/tr-TR/TR")
-        self.driver.implicitly_wait(5)
-        self.wait = WebDriverWait(self.driver, 5)
+        self.driver.get(self.base_url)
+        self.driver.implicitly_wait(10)
+        self.wait = WebDriverWait(self.driver, 10)
 
     def test_check_LCW_automation(self):
         actions = ActionChains(self.driver)
-        actions.move_to_element(self.driver.find_element(By.LINK_TEXT, "EV & YAŞAM")).perform()
-        actions.move_to_element(self.driver.find_element(By.LINK_TEXT, "Çatal, Kaşık ve Bıçak")).click().perform()
+        actions.move_to_element(self.driver.find_element(*self.EV_YASAM_CAT)).perform()
+        actions.move_to_element(self.driver.find_element(*self.CATAL_KASIK_CAT)).click().perform()
 
-        self.assertEqual("Çatal, Kaşık, Bıçak Setleri", self.driver.find_element(
-            By.CLASS_NAME, "lcw-breadcrumb__item-list__item:last-child").text, "Breadcrumb assertion is false.")
+        self.assertEqual(self.catal_kasik_brd, self.driver.find_element(*self.CATAL_KASIK_BRD).text,
+                         "Breadcrumb assertion is false.")
 
-        self.driver.find_elements(By.CSS_SELECTOR, "div.product-card")[2].click()
-        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(
-            By.LINK_TEXT, "SEPETE EKLE")), "Add to Cart button is not present.")
+        self.driver.find_elements(*self.PRODUCT_CARD)[1].click()
+        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(*self.ADD_TO_CART_BTN)),
+                        "Add to Cart button is not present.")
 
-        self.driver.find_element(By.LINK_TEXT, "SEPETE EKLE").click()
-        self.assertEqual("SEPETE EKLENDİ", self.driver.find_element(
-            By.LINK_TEXT, "SEPETE EKLENDİ").text, "Couldn't find 'SEPETE EKLENDİ'.")
+        self.driver.find_element(*self.ADD_TO_CART_BTN).click()
+        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(*self.CART_COUNT_BADGE)),
+                        "Sepete ürün eklenmedi.")
 
-        self.driver.find_element(By.CSS_SELECTOR, "span.badge-circle").click()
-        self.assertEqual("ÖDEME ADIMINA GEÇ", self.driver.find_element(
-            By.LINK_TEXT, "ÖDEME ADIMINA GEÇ").text, "Couldn't find 'ÖDEME ADIMINA GEÇ'.")
+        self.driver.find_element(*self.CART_COUNT_BADGE).click()
+        self.assertEqual(self.proceed_to_pay_txt, self.driver.find_element(*self.PROCEED_TO_PAY_TXT).text,
+                         "Couldn't find 'ÖDEME ADIMINA GEÇ'.")
 
-        self.driver.find_element(By.CSS_SELECTOR, "[title='Sil']").click()
-        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(
-            By.LINK_TEXT, "Sil")), "Item Delete Modal not visible.")
+        self.driver.find_element(*self.DELETE_ITEM_ICON).click()
+        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(*self.DELETE_BTN)),
+                        "Item Delete Modal not visible.")
 
-        self.driver.find_element(By.LINK_TEXT, "Sil").click()
-        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(
-            By.CLASS_NAME, "cart-empty-title")), "Cart is not empty.")
+        self.driver.find_element(*self.DELETE_BTN).click()
+        self.assertTrue(EC.presence_of_element_located(self.driver.find_element(*self.EMPTY_CART_TEXT)),
+                        "Cart is not empty.")
 
-        self.driver.find_element(By.CSS_SELECTOR, "a.main-header-logo").click()
-        self.assertEqual("https://www.lcwaikiki.com/tr-TR/TR", self.driver.current_url, "Is not on mainpage.")
+        self.driver.find_element(*self.LCW_LOGO).click()
+        self.assertEqual(self.base_url, self.driver.current_url,
+                         "Is not on mainpage.")
 
     def tearDown(self) -> None:
         self.driver.quit()
