@@ -24,5 +24,8 @@ class BasePage(object):
     def hover_element(self, *locator):
         self.actions.move_to_element(self.find_element(*locator)).perform()
 
+    def text(self, locator):
+        self.text(*locator.text)
+
 
 
