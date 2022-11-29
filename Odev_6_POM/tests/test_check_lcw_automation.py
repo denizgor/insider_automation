@@ -19,9 +19,9 @@ class TestCheckLCWAutomation(BaseTest):
     proceed_to_pay_txt = "ÖDEME ADIMINA GEÇ"
     catal_kasik_brd = "Çatal, Kaşık, Bıçak Setleri"
 
-    def test_check_LCW_automation(self):
+    def test_check_lcw_automation(self):
         home_page = HomePage(self.driver)
-        home_page.click_ev_yasam_cat()
+        home_page.hover_ev_yasam_cat()
         home_page.click_catal_kasik()
 
         self.assertEqual(self.catal_kasik_brd, self.CATAL_KASIK_BRD.text, "Breadcrumb assertion is false.")
