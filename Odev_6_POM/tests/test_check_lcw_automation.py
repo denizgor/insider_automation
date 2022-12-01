@@ -1,20 +1,21 @@
 import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
 from Odev_6_POM.pages.product_page import ProductPage
 from Odev_6_POM.tests.base_test import BaseTest
 from Odev_6_POM.pages.home_page import HomePage
 from Odev_6_POM.pages.category_page import CategoryPage
 
 
+
 class TestCheckLCWAutomation(BaseTest):
-    CATAL_KASIK_BRD = (By.CLASS_NAME, "lcw-breadcrumb__item-list__item:last-child")
+
     PROCEED_TO_PAY_TXT = (By.LINK_TEXT, "ÖDEME ADIMINA GEÇ")
     DELETE_ITEM_ICON = (By.CSS_SELECTOR, "[title='Sil']")
     DELETE_BTN = (By.LINK_TEXT, "Sil")
     EMPTY_CART_TEXT = (By.CLASS_NAME, "cart-empty-title")
     LCW_LOGO = (By.CSS_SELECTOR, "a.main-header-logo")
+    CATAL_KASIK_BRD = (By.CLASS_NAME, "li.lcw-breadcrumb__item-list__item:last-child")
 
     proceed_to_pay_txt = "ÖDEME ADIMINA GEÇ"
     catal_kasik_brd = "Çatal, Kaşık, Bıçak Setleri"
@@ -24,10 +25,13 @@ class TestCheckLCWAutomation(BaseTest):
         home_page.hover_ev_yasam_cat()
         home_page.click_catal_kasik()
 
-        self.assertEqual(self.catal_kasik_brd, self.CATAL_KASIK_BRD.text, "Breadcrumb assertion is false.")
+
 
         # self.driver.find_elements(*self.PRODUCT_CARD)[1].click()
         category_page = CategoryPage(self.driver)
+        category_page.get_breadcrumb()
+        self.assertEqual(self.catal_kasik_brd, category_page.get_breadcrumb(), "Breadcrumb assertion is false.")
+
         category_page.click_a_product()
 
         product_page = ProductPage(self.driver)
@@ -57,5 +61,9 @@ class TestCheckLCWAutomation(BaseTest):
         self.assertEqual(self.base_url, self.driver.current_url,
                          "Is not on mainpage.")
 
+
+
     def tearDown(self):
         self.driver.quit()
+
+
