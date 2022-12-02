@@ -7,7 +7,7 @@ class ProductPage(BasePage):
     CART_COUNT_BADGE = (By.CSS_SELECTOR, "span.badge-circle")
 
     def wait_add_to_cart_btn(self):
-        self.wait_element(self.ADD_TO_CART_BTN, "Add to Cart button is not present.")
+        self.wait_element(*self.ADD_TO_CART_BTN, "Add to Cart button is not present.")
 
     def click_add_to_cart_btn(self):
         self.click_element(*self.ADD_TO_CART_BTN)

@@ -12,7 +12,7 @@ class BasePage(object):
     def find_element(self, *locator):
         return self.driver.find_element(*locator)
 
-    def find_elements(self, *element, index):
+    def find_elements(self, index, *element):
         return self.driver.find_elements(*element)[index]
 
     def click_element(self, *locator):
@@ -24,8 +24,8 @@ class BasePage(object):
     def hover_element(self, *locator):
         self.actions.move_to_element(self.find_element(*locator)).perform()
 
-    def text(self, locator):
-        self.text(*locator.text)
+    def get_text(self, locator):
+        return self.find_element(*locator).text
 
 
 

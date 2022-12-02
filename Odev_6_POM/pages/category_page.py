@@ -8,7 +8,7 @@ class CategoryPage(BasePage):
     CATAL_KASIK_BRD = (By.CLASS_NAME, "li.lcw-breadcrumb__item-list__item:last-child")
 
     def click_a_product(self):
-        self.find_elements(*self.PRODUCT_CARD, 1).click()
+        self.find_elements(1, *self.PRODUCT_CARD).click()
 
     def get_breadcrumb(self):
         self.text(self.CATAL_KASIK_BRD)
