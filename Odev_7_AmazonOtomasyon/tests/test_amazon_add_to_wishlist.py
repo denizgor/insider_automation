@@ -1,47 +1,33 @@
-
-
-from tests.base_test import BaseTest
-from selenium.webdriver.chrome.service import Service
+from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-#from selenium.webdriver.support.ui import WebDriverWait
-
-# service = Service( "C:\\Users\\D\\Desktop\\Software Testing\\chromedriver_win32\\chromedriver.exe")
-# driver = webdriver.Chrome(service = service)
-# webdriver.chrome
-
-class Test_Amazon_Add_To_Cart(BaseTest):
-    wait = WebDriverWait(driver, 10)
-    mainpage = driver.get('https://www.amazon.com.tr')
-    MAINPAGE = driver.get('https://www.amazon.com.tr')
-    SEARCHBAR = driver.find_element(By.ID, 'twotabsearchtextbox')
+from Odev_7_AmazonOtomasyon.pages.home_page import HomePage
+from Odev_7_AmazonOtomasyon.pages.login_page import LoginPage
 
 
-    driver.get('https://www.amazon.com.tr')
-    # driver.get(search)
-    #driver.find_element(By.ID, "sp-cc-rejectall-link").click()
-    driver.maximize_window()
+class TestAmazonAddToWishlist(BaseTest):
+    SEARCHBAR = (By.ID, 'twotabsearchtextbox')
 
-    try:
+    def test_amazon_add_to_wishlist(self):
+        home_page = HomePage(self.driver)
+        home_page.click_accounts()
 
-        driver.find_element(By.ID, 'sp-cc-accept').click()
-        SEARCHBAR = wait.until(EC.element_to_be_clickable((By.ID,'twotabsearchtextbox')))
-        SEARCHBAR.click()
-        SEARCHBAR.send_keys('laptop')
-    except:
-        driver.quit()
+        login_page = LoginPage(self.driver)
+        login_page.click_login()
 
+    def tearDown(self) -> None:
+        self.driver.quit()
 
     # Sample_Projects
 
-    #ANASAYFA
+    # ANASAYFA
 
-    #Giriş
-    #Cookies
-    #id = "sp-cc-accept"
+    # Giriş
+    # Cookies
+    # id = "sp-cc-accept"
 
-    #deny cookies
-    #id="sp-cc-rejectall-link"
+    # deny cookies
+    # id="sp-cc-rejectall-link"
 
     # $("#nav-link-accountList-nav-line-1")
     #
@@ -66,7 +52,9 @@ class Test_Amazon_Add_To_Cart(BaseTest):
     # $("#nav-logo-sprites")
     #
     #
-Test_Amazon_Add_To_Cart
+
+
+
 
 # Amazon Test Task
 #
@@ -89,3 +77,5 @@ Test_Amazon_Add_To_Cart
 # 9.Favorilere alınan bu ürünün yanındaki 'Delete' butonuna basılarak, favorilerimden çıkarılacak.
 #
 # 10. Sayfada bu ürünün artık favorilere alınmadığı onaylatılacak.
+
+

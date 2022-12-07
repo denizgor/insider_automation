@@ -4,10 +4,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 class BaseTest(unittest.TestCase):
     base_url = "https://www.amazon.com.tr"
+    wait_duration = 5
 
-    def setUp(self) -> None:
+    def setUp(self):
         option = Options()
         option.add_argument("--start-maximized")
         option.add_argument("--disable-extensions")
