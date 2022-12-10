@@ -71,7 +71,7 @@ class Test_Amazon_Add_To_Cart:
     # $("#nav-logo-sprites")
     #
     #
-Test_Amazon_Add_To_Cart
+#Test_Amazon_Add_To_Cart
 
 # Amazon Test Task
 #
