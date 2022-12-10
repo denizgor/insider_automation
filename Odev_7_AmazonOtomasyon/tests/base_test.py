@@ -1,4 +1,5 @@
 import unittest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class BaseTest(unittest.TestCase):
-    base_url = "https://www.amazon.com.tr"
+    base_url = "https://www.amazon.com.tr/"
     wait_duration = 5
 
     def setUp(self):

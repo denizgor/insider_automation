@@ -1,8 +1,8 @@
-from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from Odev_7_AmazonOtomasyon.pages.home_page import HomePage
 from Odev_7_AmazonOtomasyon.pages.login_page import LoginPage
+from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 
 
 class TestAmazonAddToWishlist(BaseTest):
@@ -10,15 +10,19 @@ class TestAmazonAddToWishlist(BaseTest):
 
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
+        self.assertEqual(self.base_url, self.driver.current_url, "The base_url doesn't match current URL!")
+        home_page.accept_cookies()
         home_page.click_accounts()
 
         login_page = LoginPage(self.driver)
+        self.assertTrue(EC.presence_of_element_located(*login_page.LOGIN))
         login_page.click_login()
+
 
     def tearDown(self) -> None:
         self.driver.quit()
 
-    # Sample_Projects
+  
 
     # ANASAYFA
 
@@ -51,7 +55,7 @@ class TestAmazonAddToWishlist(BaseTest):
     # #Logo
     # $("#nav-logo-sprites")
     #
-    #
+
 
 
 

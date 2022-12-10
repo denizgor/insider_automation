@@ -1,5 +1,6 @@
-from Odev_7_AmazonOtomasyon.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+
+from Odev_7_AmazonOtomasyon.pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
