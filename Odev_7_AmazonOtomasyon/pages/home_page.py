@@ -4,7 +4,7 @@ from Odev_7_AmazonOtomasyon.pages.base_page import BasePage
 
 
 class HomePage(BasePage):
-    ACCOUNTS = (By.LINK_TEXT, "Hesabım")
+    ACCOUNTS = (By.ID, "nav-link-accountList")
     COOKIE_PERMISSION = (By.ID, "sp-cc-accept")
 
     def click_accounts(self):

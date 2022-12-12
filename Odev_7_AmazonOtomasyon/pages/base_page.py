@@ -14,3 +14,5 @@ class BasePage(object):
     def click_element(self, *locator):
         self.find_element(*locator).click()
 
+    def fill_field(self, *locator):
+        self.actions.send_keys(self.find_element(*locator))

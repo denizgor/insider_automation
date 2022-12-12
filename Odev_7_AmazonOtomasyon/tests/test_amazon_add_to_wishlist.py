@@ -8,6 +8,9 @@ from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 class TestAmazonAddToWishlist(BaseTest):
     SEARCHBAR = (By.ID, 'twotabsearchtextbox')
 
+    email_info = "e7cd978d@opayq.com"
+    password_info = "LJsxBU.22G"
+
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
         self.assertEqual(self.base_url, self.driver.current_url, "The base_url doesn't match current URL!")
@@ -15,7 +18,8 @@ class TestAmazonAddToWishlist(BaseTest):
         home_page.click_accounts()
 
         login_page = LoginPage(self.driver)
-        self.assertTrue(EC.presence_of_element_located(*login_page.LOGIN))
+        self.assertTrue(EC.presence_of_element_located(login_page.LOGIN))
+        login_page.fill_email(self.email_info)
         login_page.click_login()
 
 
