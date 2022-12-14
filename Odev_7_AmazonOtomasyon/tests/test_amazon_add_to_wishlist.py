@@ -8,8 +8,8 @@ from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 class TestAmazonAddToWishlist(BaseTest):
     SEARCHBAR = (By.ID, 'twotabsearchtextbox')
 
-    email_info = "e7cd978d@opayq.com"
-    password_info = "LJsxBU.22G"
+    email_text = "e7cd978d@opayq.com"
+    password_text = "LJsxBU.22G"
 
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
@@ -19,8 +19,11 @@ class TestAmazonAddToWishlist(BaseTest):
 
         login_page = LoginPage(self.driver)
         self.assertTrue(EC.presence_of_element_located(login_page.LOGIN))
-        login_page.fill_email(self.email_info)
-        login_page.click_login()
+        login_page.send_email(self.email_text)
+        login_page.click_continue()
+        login_page.send_password(self.password_text)
+        login_page.click_submit()
+
 
 
     def tearDown(self) -> None:
