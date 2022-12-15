@@ -3,13 +3,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from Odev_7_AmazonOtomasyon.pages.home_page import HomePage
 from Odev_7_AmazonOtomasyon.pages.login_page import LoginPage
 from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
+from Odev_7_AmazonOtomasyon.pages.search_result_page import SearchResultPage
 
 
 class TestAmazonAddToWishlist(BaseTest):
-    SEARCHBAR = (By.ID, 'twotabsearchtextbox')
 
     email_text = "e7cd978d@opayq.com"
     password_text = "LJsxBU.22G"
+    search_keys = "samsung"
 
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
@@ -23,6 +24,12 @@ class TestAmazonAddToWishlist(BaseTest):
         login_page.click_continue()
         login_page.send_password(self.password_text)
         login_page.click_submit()
+
+        home_page.send_search_keys(self.search_keys)
+        home_page.submit_search()
+
+        search_result_page = SearchResultPage(self.driver)
+        search_result_page.go_to_next_page()
 
 
 
