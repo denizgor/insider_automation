@@ -19,4 +19,4 @@ class HomePage(BasePage):
         self.send_text(text, *self.SEARCH_BOX)
 
     def submit_search(self):
-        self.click_element(*self.SEARCH_BOX)
+        self.click_element(*self.SUBMIT_SEARCH_BTN)

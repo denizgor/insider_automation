@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 from Odev_7_AmazonOtomasyon.pages.home_page import HomePage
 from Odev_7_AmazonOtomasyon.pages.login_page import LoginPage
-from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 from Odev_7_AmazonOtomasyon.pages.search_result_page import SearchResultPage
+from Odev_7_AmazonOtomasyon.pages.product_page import ProductPage
+from Odev_7_AmazonOtomasyon.pages.wishlist_page import WishlistPage
 
 
 class TestAmazonAddToWishlist(BaseTest):
@@ -11,6 +13,8 @@ class TestAmazonAddToWishlist(BaseTest):
     email_text = "e7cd978d@opayq.com"
     password_text = "LJsxBU.22G"
     search_keys = "samsung"
+    search_page = "2"
+
 
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
@@ -29,7 +33,24 @@ class TestAmazonAddToWishlist(BaseTest):
         home_page.submit_search()
 
         search_result_page = SearchResultPage(self.driver)
+        self.assertIn(self.search_keys, search_result_page.get_search_term_text(), "Search and result do not match.")
         search_result_page.go_to_next_page()
+        self.assertEqual(self.search_page, search_result_page.get_selected_page_text(), "Current page isn't 2nd page.")
+        search_result_page.get_a_product()
+        chosen_product_name = search_result_page.get_product_name()
+
+        product_page = ProductPage(self.driver)
+        product_page.add_to_wishlist()
+        product_page.close_popup()
+        product_page.hover_accounts()
+        product_page.go_to_wishlist()
+
+        wishlist_page = WishlistPage(self.driver)
+
+        self.assertEqual(chosen_product_name, wishlist_page.get_wishlisted_product_text())
+        wishlist_page.delete_item()
+
+        print("Test Done")
 
 
 
@@ -38,37 +59,7 @@ class TestAmazonAddToWishlist(BaseTest):
 
   
 
-    # ANASAYFA
 
-    # Giriş
-    # Cookies
-    # id = "sp-cc-accept"
-
-    # deny cookies
-    # id="sp-cc-rejectall-link"
-
-    # $("#nav-link-accountList-nav-line-1")
-    #
-    #
-    # #Siparişler
-    # $("#nav-orders")
-    #
-    # #Sepet
-    # $("#nav-cart")
-    #
-    #
-    # #Searchbox-Dropdown
-    # $("#searchDropdownBox")
-    #
-    # #Searchbox
-    # $("#twotabsearchtextbox")
-    #
-    # #Konum
-    # $("#nav-global-location-data-modal-action")
-    #
-    # #Logo
-    # $("#nav-logo-sprites")
-    #
 
 
 

@@ -16,3 +16,6 @@ class BasePage(object):
 
     def send_text(self, text, *locator):
         self.find_element(*locator).send_keys(text)
+
+    def hover_element(self, *locator):
+        self.actions.move_to_element(self.find_element(*locator)).perform()
