@@ -37,22 +37,22 @@ class TestAmazonAddToWishlist(BaseTest):
         search_result_page.go_to_next_page()
         self.assertEqual(self.search_page, search_result_page.get_selected_page_text(), "Current page isn't 2nd page.")
         search_result_page.get_a_product()
-        chosen_product_name = search_result_page.get_product_name()
 
         product_page = ProductPage(self.driver)
+        chosen_product_name = product_page.get_product_name()
         product_page.add_to_wishlist()
         product_page.close_popup()
         product_page.hover_accounts()
         product_page.go_to_wishlist()
 
         wishlist_page = WishlistPage(self.driver)
-
+        product_attribute = wishlist_page.get_wishlisted_product_attribute()
+        print(product_attribute)
         self.assertEqual(chosen_product_name, wishlist_page.get_wishlisted_product_text())
         wishlist_page.delete_item()
 
-        print("Test Done")
 
-
+        print("Test Complete")
 
     def tearDown(self) -> None:
         self.driver.quit()
