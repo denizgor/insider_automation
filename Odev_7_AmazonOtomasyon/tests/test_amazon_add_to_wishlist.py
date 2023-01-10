@@ -1,11 +1,11 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from Odev_7_AmazonOtomasyon.tests.base_test import BaseTest
 from Odev_7_AmazonOtomasyon.pages.home_page import HomePage
 from Odev_7_AmazonOtomasyon.pages.login_page import LoginPage
 from Odev_7_AmazonOtomasyon.pages.search_result_page import SearchResultPage
 from Odev_7_AmazonOtomasyon.pages.product_page import ProductPage
 from Odev_7_AmazonOtomasyon.pages.wishlist_page import WishlistPage
+from selenium.webdriver.support import expected_conditions as EC
+
 
 
 class TestAmazonAddToWishlist(BaseTest):
@@ -14,7 +14,8 @@ class TestAmazonAddToWishlist(BaseTest):
     password_text = "LJsxBU.22G"
     search_keys = "samsung"
     search_page = "2"
-
+    selected_product_index = 9
+    wishlist_page_prod_index = 11
 
     def test_amazon_add_to_wishlist(self):
         home_page = HomePage(self.driver)
@@ -36,7 +37,8 @@ class TestAmazonAddToWishlist(BaseTest):
         self.assertIn(self.search_keys, search_result_page.get_search_term_text(), "Search and result do not match.")
         search_result_page.go_to_next_page()
         self.assertEqual(self.search_page, search_result_page.get_selected_page_text(), "Current page isn't 2nd page.")
-        search_result_page.get_a_product()
+
+        search_result_page.get_a_product(self.selected_product_index)
 
         product_page = ProductPage(self.driver)
         chosen_product_name = product_page.get_product_name()
@@ -46,45 +48,10 @@ class TestAmazonAddToWishlist(BaseTest):
         product_page.go_to_wishlist()
 
         wishlist_page = WishlistPage(self.driver)
-        product_attribute = wishlist_page.get_wishlisted_product_attribute()
-        print(product_attribute)
         self.assertEqual(chosen_product_name, wishlist_page.get_wishlisted_product_text())
         wishlist_page.delete_item()
-
-
-        print("Test Complete")
+        self.assertTrue(EC.presence_of_element_located(wishlist_page.get_deleted_item_text(self.wishlist_page_prod_index)))
 
     def tearDown(self) -> None:
         self.driver.quit()
-
-  
-
-
-
-
-
-
-
-# Amazon Test Task
-#
-# 1. http://www.amazon.com sitesine gidilecek ve anasayfanın açıldığını assertion ile onaylatılacak.
-#
-# 2.Login ekranını açıp, bir kullanıcı ile login olunacak ( daha önce siteye üyeliğiniz varsa o olabilir. )
-#
-# 3.Ekranin üstündeki Search alanına 'samsung' yazıp ara butonuna tıklanılacak.
-#
-# 4.Gelen sayfada samsung icin sonuc bulunduğu onaylatılacak.
-#
-# 5.Arama sonuçlarından 2. sayfaya tıklanıp ve açılan sayfada 2. sayfanin şu an gösterimde olduğunu onaylatılacak.
-#
-# 6.Üstten 3. ürünün içindeki 'Add to List' butonuna tıklatılacak.
-#
-# 7.Ekranin en üstündeki 'List' linkine tıklanarak içerisinden Wish listi seçilecek.
-#
-# 8.Açılan sayfada bir onceki sayfada izlemeye alınmış ürünün bulunduğu onaylatılacak.
-#
-# 9.Favorilere alınan bu ürünün yanındaki 'Delete' butonuna basılarak, favorilerimden çıkarılacak.
-#
-# 10. Sayfada bu ürünün artık favorilere alınmadığı onaylatılacak.
-
 

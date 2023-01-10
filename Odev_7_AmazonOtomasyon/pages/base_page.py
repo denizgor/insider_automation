@@ -1,5 +1,6 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage(object):
@@ -19,3 +20,9 @@ class BasePage(object):
 
     def hover_element(self, *locator):
         self.actions.move_to_element(self.find_element(*locator)).perform()
+
+    def wait_element(self, method, message=""):
+        return self.wait.until(EC.presence_of_element_located(method), message)
+
+    def find_elements(self, index, *element):
+        return self.driver.find_elements(*element)[index]
