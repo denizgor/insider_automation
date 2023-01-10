@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 
 class CategoryPage(BasePage):
-
     PRODUCT_CARD = (By.CSS_SELECTOR, "div.product-card")
     CATAL_KASIK_BRD = (By.CLASS_NAME, "li.lcw-breadcrumb__item-list__item:last-child")
 

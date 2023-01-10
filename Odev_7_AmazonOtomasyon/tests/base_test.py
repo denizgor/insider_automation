@@ -16,5 +16,3 @@ class BaseTest(unittest.TestCase):
         self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=option)
         self.driver.get(self.base_url)
         self.driver.implicitly_wait(self.wait_duration)
-
-

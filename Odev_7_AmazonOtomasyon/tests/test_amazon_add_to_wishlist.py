@@ -7,9 +7,7 @@ from Odev_7_AmazonOtomasyon.pages.wishlist_page import WishlistPage
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 class TestAmazonAddToWishlist(BaseTest):
-
     email_text = "e7cd978d@opayq.com"
     password_text = "LJsxBU.22G"
     search_keys = "samsung"
@@ -50,8 +48,8 @@ class TestAmazonAddToWishlist(BaseTest):
         wishlist_page = WishlistPage(self.driver)
         self.assertEqual(chosen_product_name, wishlist_page.get_wishlisted_product_text())
         wishlist_page.delete_item()
-        self.assertTrue(EC.presence_of_element_located(wishlist_page.get_deleted_item_text(self.wishlist_page_prod_index)))
+        self.assertTrue(
+            EC.presence_of_element_located(wishlist_page.get_deleted_item_text(self.wishlist_page_prod_index)))
 
     def tearDown(self) -> None:
         self.driver.quit()
-

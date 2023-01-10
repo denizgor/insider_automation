@@ -19,5 +19,3 @@ class SearchResultPage(BasePage):
 
     def get_a_product(self, index):
         self.find_elements(index, *self.PRODUCT).click()
-
-

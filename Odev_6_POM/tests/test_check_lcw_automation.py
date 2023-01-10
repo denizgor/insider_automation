@@ -23,7 +23,8 @@ class TestCheckLCWAutomation(BaseTest):
         home_page = HomePage(self.driver)
         home_page.hover_ev_yasam_cat()
         home_page.click_catal_kasik()
-        self.assertEqual(self.catal_kasik_brd, home_page.get_text(self.CATAL_KASIK_BRD), "Breadcrumb assertion is false.")
+        self.assertEqual(self.catal_kasik_brd, home_page.get_text(self.CATAL_KASIK_BRD),
+                         "Breadcrumb assertion is false.")
 
         # self.driver.find_elements(*self.PRODUCT_CARD)[1].click()
         category_page = CategoryPage(self.driver)
