@@ -1,4 +1,5 @@
 from Odev_7_AmazonOtomasyon.pages.base_page import BasePage
+from Odev_7_AmazonOtomasyon.pages.wishlist_page import WishlistPage
 from selenium.webdriver.common.by import By
 
 
@@ -23,3 +24,5 @@ class ProductPage(BasePage):
 
     def go_to_wishlist(self):
         self.click_element(*self.WISHLIST_TEXT)
+
+        return WishlistPage(self.driver)

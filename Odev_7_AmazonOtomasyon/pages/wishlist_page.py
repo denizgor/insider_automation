@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 
 
 class WishlistPage(BasePage):
-    DELETE_ITEM = (By.CSS_SELECTOR, "[name='submit.deleteItem']")
+    #DELETE_ITEM = (By.CSS_SELECTOR, "[name='submit.deleteItem']")
+    DELETE_ITEM = (By.NAME, "submit.deleteItem")
     WISHLISTED_PRODUCT = (By.CSS_SELECTOR, "h2.a-size-base")
     DELETED_TEXT = (By.CLASS_NAME, "a-alert-content")
 
@@ -15,3 +16,6 @@ class WishlistPage(BasePage):
 
     def get_deleted_item_text(self, index):
         return self.find_elements(index, *self.DELETED_TEXT).text
+
+    def is_item_deleted(self, index):
+        return self.find_elements(index, *self.DELETED_TEXT)

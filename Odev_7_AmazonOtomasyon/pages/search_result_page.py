@@ -1,4 +1,5 @@
 from Odev_7_AmazonOtomasyon.pages.base_page import BasePage
+from Odev_7_AmazonOtomasyon.pages.product_page import ProductPage
 from selenium.webdriver.common.by import By
 
 
@@ -19,3 +20,5 @@ class SearchResultPage(BasePage):
 
     def get_a_product(self, index):
         self.find_elements(index, *self.PRODUCT).click()
+
+        return ProductPage(self.driver)

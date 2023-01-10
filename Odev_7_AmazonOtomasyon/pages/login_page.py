@@ -7,8 +7,11 @@ class LoginPage(BasePage):
     LOGIN = (By.CSS_SELECTOR, "[alt='Giriş Yapma ve Güvenlik']")
     EMAIL_FIELD = (By.ID, "ap_email")
     PASSWORD_FIELD = (By.ID, "ap_password")
-    CONTINUE_BTN = (By.CSS_SELECTOR, "input#continue")
-    SUBMIT_BTN = (By.CSS_SELECTOR, "input#signInSubmit")
+    CONTINUE_BTN = (By.ID, "continue")
+    SUBMIT_BTN = (By.ID, "signInSubmit")
+
+    def is_on_login_page(self):
+        return self.find_element(*self.EMAIL_FIELD)
 
     def click_login(self):
         self.click_element(*self.LOGIN)
@@ -24,6 +27,3 @@ class LoginPage(BasePage):
 
     def click_submit(self):
         self.click_element(*self.SUBMIT_BTN)
-
-
-
